@@ -16,6 +16,34 @@
 
 UENUM(BlueprintType)
 enum class EBuffModifier : uint8 {
+	None,
+	Flat,
+	Percentage,
+};
+
+UENUM(BlueprintType)
+enum class EBuffType : uint8 {
+	None,
+	MovementSpeed, // Implemented
+	JumpHeight,
+	ThrowStrength,
+	SlowdownDay, // Implemented
+	ExtraMoneyGain, // Implemented
+	FarmLevelIncreased, // Implemented
+	XPGainIncreased,
+	Luck,
+	SnakeBiteResistance, // Implemented
+};
+
+USTRUCT(BlueprintType)
+struct FBuff {
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int32 BuffId = -1;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ExposeOnSpawn=true))
 	UTexture2D* BuffIcon = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(ExposeOnSpawn=true))
